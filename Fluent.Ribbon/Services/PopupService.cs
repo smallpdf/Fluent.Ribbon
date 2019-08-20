@@ -216,6 +216,14 @@ namespace Fluent
                 return;
             }
 
+            // If the window of the control is not active anymore we have to close the Popup.
+            if (control is DependencyObject dependencyObject
+                && Window.GetWindow(dependencyObject)?.IsActive == false)
+            {
+                RaiseDismissPopupEvent(sender, DismissPopupMode.Always);
+                return;
+            }
+
             if (Mouse.Captured == sender
                 || control.IsDropDownOpen == false
                 || control.IsContextMenuOpened)
@@ -336,6 +344,14 @@ namespace Fluent
         {
             if (control.IsDropDownOpen == false)
             {
+                return;
+            }
+
+            // If the window of the control is not active anymore we have to close the Popup.
+            if (control is DependencyObject dependencyObject
+                && Window.GetWindow(dependencyObject)?.IsActive == false)
+            {
+                control.IsDropDownOpen = false;
                 return;
             }
 
