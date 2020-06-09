@@ -60,7 +60,8 @@ namespace Fluent
             }
             else
             {
-                this.background.SetResourceReference(Shape.FillProperty, "WhiteBrush");
+                //this.background.SetResourceReference(Shape.FillProperty, "WhiteBrush");
+                this.background.SetResourceReference(Shape.FillProperty, "Transparent");
             }
 
             this.visualChildren = new VisualCollection(this)
